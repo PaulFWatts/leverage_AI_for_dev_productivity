@@ -13,6 +13,16 @@ backup_db_file = "backup.db"
 
 
 def backup_db():
+    """
+    Creates a backup of the active database file.
+
+    This function attempts to copy the active database file to a backup location.
+    If the operation is successful, it logs an informational message.
+    If the operation fails, it logs an error message with the exception details.
+
+    Raises:
+        Exception: If an error occurs during the file copy operation.
+    """
     try:
         shutil.copy(active_db_file, backup_db_file)
         logging.info("Backup successful")
@@ -21,6 +31,17 @@ def backup_db():
 
 
 def restore_db():
+    """
+    Restores the database from a backup file to the active database file.
+
+    This function attempts to copy the backup database file to the active
+    database file location. If the operation is successful, it logs an
+    informational message indicating success. If an error occurs during
+    the copy process, it logs an error message with the exception details.
+
+    Raises:
+        Exception: If an error occurs during the file copy operation.
+    """
     try:
         shutil.copy(backup_db_file, active_db_file)
         logging.info("Restore successful")
